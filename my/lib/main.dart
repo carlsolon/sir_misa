@@ -381,30 +381,3 @@ class Store {
       };
 }
 
-/*
-Backend / GPT integration notes (quick):
-
-- Your backend should implement POST /api/recommend.
-- Validate input (budget int, location string, purpose string).
-- Gather prices from your price sources (Shopee, Lazada, PC Express). Store them in your DB.
-- Create a prompt for GPT that includes:
-  - The user's budget, purpose, and location
-  - A short list of candidate parts with prices
-  - Request GPT to return a JSON with build (component, model, price), stores, compatibility_ok, explanation, estimated_total
-
-Example backend prompt (pseudocode):
-
-"User budget: 25000 PHP. Purpose: gaming. Location: Manila, PH.
-Candidate parts (with prices): [ {"model": "Ryzen 5 5600", "price": 8500}, ... ]
-Please return a JSON object with keys: build (array), stores (array), compatibility_ok (bool), explanation (string), estimated_total (number). Only return JSON."
-
-- The backend then calls OpenAI's Chat API, parses and returns the JSON to this Flutter app.
-
-Security: don't call OpenAI directly from the Flutter app (that would expose your API key). Keep the key on the backend.
-
-Optional next steps I can provide:
-- Node.js + Express backend sample (with GPT prompt templates)
-- Firestore schema for storing price sources and shops
-- A more advanced Flutter UI with inline price editing, charts, and store filtering
-
-*/
